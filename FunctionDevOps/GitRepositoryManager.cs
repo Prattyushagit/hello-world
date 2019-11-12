@@ -51,7 +51,7 @@ namespace FunctionDevOps
             using (var repo = new Repository(_localFolder.FullName))
             {
                 var files = _localFolder.GetFiles("*", SearchOption.AllDirectories).Select(f => f.FullName);
-               // repo.Stage(files);
+                //repo.Stage(files);
 
                 repo.Commit(message,null,null);
             }
@@ -67,19 +67,25 @@ namespace FunctionDevOps
         {
             using (var repo = new Repository(_localFolder.FullName))
             {
-                var remote = repo.Network.Remotes.FirstOrDefault(r => r.Name == remoteName);
-                if (remote == null)
-                {
-                    repo.Network.Remotes.Add(remoteName, _repoSource);
-                    remote = repo.Network.Remotes.FirstOrDefault(r => r.Name == remoteName);
-                }
+                //var remote = repo.Network.Remotes.FirstOrDefault(r => r.Name == remoteName);
+                //if (remote == null)
+                //{
+                //    repo.Network.Remotes.Add(remoteName, _repoSource);
+                //    remote = repo.Network.Remotes.FirstOrDefault(r => r.Name == remoteName);
+                //}
+
+                Remote remote = repo.Network.Remotes["hello-world"];
 
                 var options = new PushOptions
                 {
                     CredentialsProvider = (url, usernameFromUrl, types) => _credentials
                 };
 
-                repo.Network.Push(remote, branchName, options);
+                //repo.Network.Push(remote, branchName, options);
+
+                repo.Network.Fetch(remote, @"refs/heads/master");
+
+                repo.Network.Push(remote, @"refs/heads/master", options);
             }
         }
     }

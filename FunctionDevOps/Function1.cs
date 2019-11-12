@@ -36,9 +36,12 @@ namespace FunctionDevOps
 
             try
             {
-                GitRepositoryManager gitRepositoryManager = new GitRepositoryManager("prattyusha.mandlik@gmail.com", "Prattyusha23!", @"https://github.com/Prattyushagit/hello-world", @"C:\Users\PrattyushaAshokMandl\Downloads\ExportedTemplate-Azure_Accel");
+                GitRepositoryManager gitRepositoryManager = new GitRepositoryManager("prattyusha.mandlik@gmail.com", "Prattyusha23!", @"https://github.com/Prattyushagit/hello-world", @"C:\Users\PrattyushaAshokMandl\source\repos\FunctionDevOps");
 
-                gitRepositoryManager.CommitAllChanges("CheckinArmTemplate");
+                //gitRepositoryManager.CommitAllChanges("CheckinArmTemplate");
+
+                gitRepositoryManager.PushCommits("hello-world", "master");
+
 
                 //var personalaccesstoken = "6ua7i6gv4gjts6gzljf6ypkbonmf2atqeamp2alw4rpcohuxa7bq";
                 //string responseBody = null;
