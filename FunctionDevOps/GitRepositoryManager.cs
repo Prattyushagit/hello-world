@@ -85,7 +85,7 @@ namespace FunctionDevOps
 
                // repo.Network.Fetch(remote, @"refs/heads/master");
 
-                repo.Network.Push(remote, @"refs/heads/master", options);
+                repo.Network.Push(remote, @"+refs/heads/master", options);
             }
         }
     }
